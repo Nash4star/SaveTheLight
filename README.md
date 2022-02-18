@@ -1,4 +1,4 @@
-#technoloies used
+# H1 technoloies used
 -I plan on using Canvas to design this game.
 -also going to be using a pixle designer to come up wiht the desifgns of the cystals monsters and player.
 
