@@ -18,3 +18,8 @@
 - include a heart system that when you are hit you lose a heart
 - the goal of the game it to collect the 4 crystal that are in the 4 corners of the map and bring the to the top of the map to win the game
 - im taking insperation from the original Zelda
+
+![start](img/start.jpg)
+![inGameScreen](img/inGameScreen.jpg)
+![monster](img/monster.jpg)
+![mapLayout](img/mapLayout.jpg)
