@@ -8,7 +8,11 @@
 
 
 ## User Story
-- I really want to come at this with a goal a fulling working game map and enemys that will attack you
+- I really want to come at this with a goal a fulling working game map and enemys that will get in your way
+
+
+### Hopes for the game
+- here is what i am hoping to be able to do to really add to the experience.
 - the game map would work by when you walk to the 'door' you would walk throught to the next room
 - enemies would get in your way as you travirse the map
 - include a heart system that when you are hit you lose a heart
