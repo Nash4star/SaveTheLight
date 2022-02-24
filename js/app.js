@@ -13,7 +13,7 @@ class Sprite {
         this.height = height,
         this.width = width,
         this.alive = true,
-        this.speed = 5,
+        this.speed = 7,
 
 
         this.direction = {
@@ -96,12 +96,12 @@ const randomPlaceCrystal = (max) => {
 }
 
 
-let player = new Sprite(10, 10, 'blue', 4, 4)
-let crystal1 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 6, 10, 'crystal')
-let crystal2 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 6, 10, 'crystal')
-let crystal3 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 6, 10, 'crystal')
-let crystal4 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 6, 10, 'crystal')
-let eye = new Monster(200, 50, 'white', 20, 20, 'eye')
+let player = new Sprite(10, 10, 'blue', 6, 6)
+let crystal1 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
+let crystal2 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
+let crystal3 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
+let crystal4 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
+let eye = new Monster(400, 200, 'white', 50, 50, 'eye')
 
 const stopGameLoop = () => {clearInterval(gameInterval)}
 
@@ -132,6 +132,7 @@ const gameLoop = () => {
         document.querySelector('#status').textContent = 'Now destroy the eye!'
         eye.render()
         detectHit(eye)
+
     } else {
         stopGameLoop()
         document.querySelector('#status').textContent = 'You saved the Light!'
