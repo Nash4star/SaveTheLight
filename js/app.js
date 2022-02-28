@@ -2,6 +2,7 @@ const game = document.getElementById('canvas')
 const movement = document.getElementById('movement')
 const ctx = game.getContext('2d')
 
+
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
@@ -68,10 +69,14 @@ class Sprite {
                 console.log('this is coliding')
 				this.x = game.width - this.width
 			} 
-            // if (this.x + this.width >= walls.position.x) {
-            //     this.x = walls.position.x - this.width
-            // }
+            
 		}
+        if (this.x + this.width >= walls.x
+            && this.x <= walls.x + walls.width
+            && this.y + this.height >= walls.y
+            && this.y <= walls.y + walls.height) {
+                console.log('colision working')
+        }
         
 	}   
     render = function () {
@@ -98,393 +103,103 @@ class Monster {
 }
 // this is to create a maze to go though collect the crystals 
 // and summon the boss and beat it.
-// class vertWall {
-//     // the reason I put the argumnet in as an object is to make it easier when giving it a location
-//     constructor({ position }) {
-//         this.position = position,
-//         this.height = 20,
-//         this.width = 4
-//     }
+class vertWall {
+    // the reason I put the argumnet in as an object is to make it easier when giving it a location
+    constructor(x, y) {
+        this.x = x,
+        this.y = y,
+        this.height = 20,
+        this.width = 4
+    }
     
-//     draw() {
-//         ctx.fillStyle = 'red'
-//         ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
-//     }
-// }
+    draw() {
+        ctx.fillStyle = 'red'
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+    render = function () {
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
 
-// class horzWall {
-//     constructor( {position} ) {
-//         this.position = position,
-//         this.height = 4,
-//         this.width = 20
-//     }
-//     draw() {
-//         ctx.fillStyle = 'red'
-//         ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
-//     }
+class horzWall {
+    constructor(x, y) {
+        this.x = x,
+        this.y = y,
+        this.height = 4,
+        this.width = 20
+    }
+    draw() {
+        ctx.fillStyle = 'red'
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+    render = function () {
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
 
-// }
+const walls = [
+    new vertWall( 20, 0 ),
+    new vertWall( 40, 0 ),
+    new vertWall( 40, 40 ),
+    new vertWall( 60, 0 ),
+    new vertWall( 60, 20 ),
+    new vertWall( 60, 40 ),
+    new vertWall( 60, 60 ),   
+    new vertWall( 20, 80 ),
+    new vertWall( 80, 20 ),
+    new vertWall( 80, 40),
+    new vertWall( 80, 60),
+    new vertWall( 80, 80),
+    new vertWall( 80, 100),
+    new vertWall( 100, 20),
+    new vertWall( 100, 40),
+    new vertWall( 100, 60),
+    new vertWall( 100, 80),
+    new vertWall( 120, 0),
+    new vertWall( 120, 20), 
+    new vertWall( 120, 40),
+    new vertWall( 120, 60),
+    new vertWall( 120, 80),
+    new vertWall( 120, 100),
+    new vertWall( 140, 120),
+    new vertWall( 140, 100),
+    new vertWall( 140, 80),
+    new vertWall( 140, 60), 
+    new vertWall( 100, 100),
+    new vertWall( 100, 120), 
+    new vertWall( 160, 60),
+    new vertWall( 160, 80),
+    new vertWall( 160, 100),
+    new vertWall( 20, 120),
+    new vertWall( 40, 120),
+    new horzWall( 20, 16),
+    new horzWall( 80, 20),
+    new horzWall( 0, 40),
+    new horzWall( 20, 40),
+    new horzWall( 24, 80),
+    new horzWall( 44, 80),
+    new horzWall( 0, 120),
+    new horzWall( 40, 120),
+    new horzWall( 44, 120),
+    new horzWall( 64, 120),
+    new horzWall( 0, 56),
+    new horzWall( 20, 56),
+    new horzWall( 100, 140),
+    new horzWall( 120, 140),
+    new horzWall( 144, 60),
+    new horzWall( 140, 140),
+    new horzWall( 160, 140), 
+    new horzWall( 164, 140), 
+    new vertWall( 180, 0),
+    new vertWall( 180, 20),
+    new vertWall( 180, 40),
+    new vertWall( 180, 60),
+    new vertWall( 180, 80),
+    new vertWall( 180, 100),
+    new vertWall( 180, 120),
+    new vertWall( 20, 0)
+]
 
-// const walls = [
-//     new vertWall({
-//         position : {
-//             x: 20,
-//             y: 0
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 40,
-//             y: 0
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 40,
-//             y: 40
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 60,
-//             y: 0
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 60,
-//             y: 20
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 60,
-//             y: 40
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 60,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 20,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 80,
-//             y: 20
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 80,
-//             y: 40
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 80,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 80,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 80,
-//             y: 100
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 20
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 40
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 120,
-//             y: 0
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 120,
-//             y: 20
-//         }
-//     }),new vertWall({
-//         position : {
-//             x: 120,
-//             y: 40
-//         }
-//     }),new vertWall({
-//         position : {
-//             x: 120,
-//             y: 60
-//         }
-//     }),new vertWall({
-//         position : {
-//             x: 120,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 120,
-//             y: 100
-//         }
-//     }),new vertWall({
-//         position : {
-//             x: 140,
-//             y: 120
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 140,
-//             y: 100
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 140,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 140,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 100
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 100,
-//             y: 120
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 160,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 160,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 160,
-//             y: 100
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 20,
-//             y: 120
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 40,
-//             y: 120
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 20,
-//             y: 16
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 80,
-//             y: 20
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 0,
-//             y: 40
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 20,
-//             y: 40
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 24,
-//             y: 80
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 44,
-//             y: 80
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 0,
-//             y: 120
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 40,
-//             y: 120
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 44,
-//             y: 120
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 64,
-//             y: 120
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 0,
-//             y: 56
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 20,
-//             y: 56
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 100,
-//             y: 140
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 120,
-//             y: 140
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 144,
-//             y: 60
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 140,
-//             y: 140
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 160,
-//             y: 140
-//         }
-//     }),
-//     new horzWall({
-//         position : {
-//             x: 164,
-//             y: 140
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 0
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 20
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 40
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 60
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 80
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 100
-//         }
-//     }),
-//     new vertWall({
-//         position : {
-//             x: 180,
-//             y: 120
-//         }
-//     }),
-
-//     new vertWall({
-//         position : {
-//             x: 20,
-//             y: 0
-//         }
-//     }),
-
-// ]
 
 const randomPlaceCrystal = (max) => {
     return Math.floor(Math.random() * max)
@@ -496,10 +211,11 @@ let crystal1 = new Monster( 147, 70, 'white', 8, 12, 'crystal')
 let crystal2 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
 let crystal3 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
 let crystal4 = new Monster(randomPlaceCrystal(game.width), randomPlaceCrystal(game.height), 'white', 12, 20, 'crystal')
-let eye = new Monster(400, 200, 'white', 50, 50, 'eye')
+let eye = new Monster(400, 200, 'red', 50, 50, 'eye')
 
 
 const stopGameLoop = () => {clearInterval(gameInterval)}
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -509,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
     // the way to be able to kill/spawn the monster is to collect all the crystals
+   
     if (crystal1.alive) {
         crystal1.render()
         detectHit(crystal1)
@@ -537,9 +254,9 @@ const gameLoop = () => {
     movement.textContent = player.x + ', ' + player.y
     player.render()
     player.movePlayer()
-    // walls.forEach(wall => {
-    //     wall.draw()
-    // })
+    walls.forEach(wall => {
+        wall.draw()
+    })
 }
 
 document.addEventListener('keydown', (e) => {
