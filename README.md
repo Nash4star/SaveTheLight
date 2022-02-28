@@ -4,15 +4,15 @@
 - also going to be using a pixle designer to come up wiht the desifgns of the cystals monsters and player.
 
 ## approach taken 
-- this game is a dungeon crawler where the player must collect crystals while dodging and deffeating enemies.
+- this game is a dungeon crawler where the player must collect crystals to defeat the eye.
 
 
 ## User Story
 - I really want to come at this with a goal a fulling working game map and enemys that will get in your way
 
 ### MVP
-- have a boss fight with a monster that you win if you beat
 - win the fight by collecting a crystal then attacking
+
 ### stretch plan
 - here is what i am hoping to be able to do to really add to the experience.
 - the game map would work by when you walk to the 'door' you would walk throught to the next room

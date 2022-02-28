@@ -71,12 +71,7 @@ class Sprite {
 			} 
             
 		}
-        if (this.x + this.width >= walls.x
-            && this.x <= walls.x + walls.width
-            && this.y + this.height >= walls.y
-            && this.y <= walls.y + walls.height) {
-                console.log('colision working')
-        }
+       
         
 	}   
     render = function () {
@@ -117,6 +112,7 @@ class vertWall {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
     render = function () {
+        ctx.fillStyle = 'red'
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
@@ -133,6 +129,7 @@ class horzWall {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
     render = function () {
+        ctx.fillStyle = 'red'
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
@@ -412,7 +409,6 @@ const walls = [
 ]
 
 
-
 let player = new Sprite(10, 10, 'blue', 6, 6)
 let crystal1 = new Monster( 147, 70, 'lightblue', 8, 12, 'crystal')
 let crystal2 = new Monster( 100, 389, 'lightblue', 12, 8, 'crystal')
@@ -423,6 +419,14 @@ let eye = new Monster(375, 150, 'purple', 50, 50, 'eye')
 
 const stopGameLoop = () => {clearInterval(gameInterval)}
 
+// const detectHit2 = () => {
+//     if (player.x + player.width >= walls.x
+//         && player.x <= walls.x + walls.width
+//         && player.y + player.height >= walls.y
+//         && player.y <= walls.y + walls.height) {
+//             console.log('colision working')
+//     }
+// }
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -478,7 +482,7 @@ document.addEventListener('keyup', (e) => {
         player.unsetDirection(e.key)
     }
 })
-
+// this was my detection for hit detection with the cretures
 const detectHit = (thing) => {
     if (player.x < thing.x + thing.width
        && player.x + player.width > thing.x
@@ -487,6 +491,7 @@ const detectHit = (thing) => {
            thing.alive = false
            document.getElementById('status').textContent = 'powering up!'
        }
+    
 }
 
 let gameInterval = setInterval(gameLoop, 60)
