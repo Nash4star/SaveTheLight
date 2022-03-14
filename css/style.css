@@ -32,9 +32,7 @@ canvas {
     grid-gap: 0px;
     grid-template-rows: .25fr .5fr .25fr;
     grid-template-columns: .25fr .5fr .25fr;
-    grid-template-areas: "top-left top-left top-right"
-                         "game game game"
-                         "btm-left btm-right btm-right";
+    grid-template-areas: "top-left top-left top-right" "game game game" "btm-left btm-right btm-right";
 }
 #top-left, #top-right, #btm-left, #btm-right {
     display: flex;

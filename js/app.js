@@ -420,11 +420,18 @@ let eye = new Monster(375, 150, 'purple', 50, 50, 'eye')
 const stopGameLoop = () => {clearInterval(gameInterval)}
 
 // const detectHit2 = () => {
-//     if (player.x + player.width >= walls.x
-//         && player.x <= walls.x + walls.width
-//         && player.y + player.height >= walls.y
-//         && player.y <= walls.y + walls.height) {
+//     for(let i = 0; i < walls.x ; ++innerHeight) {
+//          if (player.x + player.width >= walls[i]
+//         && player.x <= walls[i] + walls.width) {
 //             console.log('colision working')
+//         } 
+        
+//     }
+//     for(let i = 0; i < walls.y; ++i) {
+//         if (player.y + player.height >= walls[i]
+//             && player.y <= walls[i] + walls.height){
+//                 console.log('colision woking')
+//             }
 //     }
 // }
 
@@ -440,6 +447,7 @@ const gameLoop = () => {
     if (crystal1.alive) {
         crystal1.render()
         detectHit(crystal1)
+        
     } else if (crystal2.alive) {
         crystal2.render()
         detectHit(crystal2)
